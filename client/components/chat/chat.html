@@ -23,7 +23,7 @@
                 <p>{{message.name}}</p>
             </div>
             <div class="col-xs-6">
-                <p>{{message.message}}<span ng-show="message.edited">*</span></p>
+                <p ng-bind-html="message.message | linky:'_blank'"></p>
             </div>
             <div class="col-xs-2">
                 <p>{{message.sent | date:'yyyy-MM-dd HH:mm:ss'}}</p>
