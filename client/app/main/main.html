@@ -22,7 +22,7 @@
                         <p>{{room.info}}</p>
                     </div>
                     <div class="col-xs-2">
-                        <button class="btn btn-default btn-xs"><i class="glyphicon glyphicon-trash" ng-click="deleteRoom(room)"></i> </button>
+                        <button class="btn btn-default btn-xs" ng-if="isAdmin()"><i class="glyphicon glyphicon-trash" ng-click="deleteRoom(room)"></i> </button>
                     </div>
                 </div>
             </div>
