@@ -1,0 +1,18 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-if="room.valid">
+    <div class="jumbotron">
+        <div class="container">
+            <h1>This is {{room.name}}. Welcome.</h1>
+        </div>
+    </div>
+
+    <div ng-include="'components/chat/chat.html'"></div>
+</div>
+<div ng-if="!room.valid">
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Ooops. Looks like you're in the wrong neighbourhood.</h1>  
+            <h2>You might want to <a href="/">go back</a>.</h2>
+        </div>
+    </div>
+</div>
