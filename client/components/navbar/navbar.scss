@@ -1,3 +1,14 @@
+.navbar-default {
+    background-color: $darkPrimaryColor;
+    color: $primaryTextColor;
+    .navbar-brand {
+        color: $primaryTextColor;
+    }
+    .navbar-nav > li > a {
+        color: $primaryTextColor;
+    }
+}
+
 .navbar-brand {
     width: 17rem;
     text-align: right;

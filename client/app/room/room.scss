@@ -1,0 +1,9 @@
+.jumbotron {
+    @include linear-gradient(#000, $primaryColor);
+    margin-top: -2rem;
+    h1 {
+        @include linear-gradient(#000, $textPrimaryColor);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}

@@ -22,9 +22,11 @@ body {
 
 // Component styles are injected through grunt
 // injector
+@import '_mixins.scss';
 @import 'account/login/login.scss';
 @import 'admin/admin.scss';
 @import 'main/main.scss';
+@import 'palette.scss';
 @import 'room/room.scss';
 @import 'upload/upload.scss';
 @import 'chat/chat.scss';

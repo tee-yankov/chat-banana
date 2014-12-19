@@ -1,3 +1,7 @@
 p, a {
+    color: $primaryTextColor;
     word-break: break-all;
+}
+.date-sent {
+    color: $secondaryTextColor;
 }
