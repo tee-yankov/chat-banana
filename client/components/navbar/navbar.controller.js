@@ -1,23 +1,25 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular.module('angularFullstackApp')
-.controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [{
-        'title': 'Home',
-        'link': '/'
-    }];
-    
-    $scope.isCollapsed = true;
-    $scope.isLoggedIn = Auth.isLoggedIn;
-    $scope.isAdmin = Auth.isAdmin;
-    $scope.getCurrentUser = Auth.getCurrentUser;
+    angular.module('angularFullstackApp')
+    .controller('NavbarCtrl', function ($scope, $location, Auth) {
+        $scope.menu = [{
+            'title': 'Home',
+            'link': '/'
+        }];
 
-    $scope.logout = function() {
-        Auth.logout();
-        $location.path('/login');
-    };
+        $scope.isCollapsed = true;
+        $scope.isLoggedIn = Auth.isLoggedIn;
+        $scope.isAdmin = Auth.isAdmin;
+        $scope.getCurrentUser = Auth.getCurrentUser;
 
-    $scope.isActive = function(route) {
-        return route === $location.path();
-    };
-});
+        $scope.logout = function() {
+            Auth.logout();
+            $location.path('/login');
+        };
+
+        $scope.isActive = function(route) {
+            return route === $location.path();
+        };
+    });
+})();
