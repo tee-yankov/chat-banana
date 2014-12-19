@@ -64,7 +64,6 @@ exports.createmessage = function(req, res, next) {
         User.findById(newMessage.name, function(err, user) {
             if (err) return next(err);
             if (!user) return res.send(401);
-            console.log(user.profile.name);
             newMessage.name = user.profile.name;
             newMessage.sent = Date.now();
             var updated = room;
