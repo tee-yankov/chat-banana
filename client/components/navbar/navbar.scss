@@ -1,0 +1,11 @@
+.navbar-brand {
+    width: 17rem;
+    text-align: right;
+    font-family: "Lobster", open-sans;
+    background: {
+        image: url('/assets/images/banana.svg');
+        position: center left;
+        size: contain;
+        repeat: no-repeat;
+    }
+}
