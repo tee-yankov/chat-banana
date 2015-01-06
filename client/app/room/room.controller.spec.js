@@ -15,7 +15,7 @@ describe('Controller: RoomCtrl', function () {
     });
   }));
 
-  it('should ...', function () {
-    expect(1).toEqual(1);
+  it('should fetch a room', function () {
+    expect(scope.room.length >= 1).toBe(true);
   });
 });

@@ -1,6 +1,13 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular.module('angularFullstackApp')
-  .controller('UploadCtrl', function ($scope) {
-    $scope.message = 'Hello';
-  });
+    angular.module('angularFullstackApp')
+        .controller('UploadCtrl', UploadCtrl);
+
+    UploadCtrl.$inject = ['$scope'];
+
+    function UploadCtrl($scope) {
+        $scope.message = 'Hello';
+    }
+
+})();
