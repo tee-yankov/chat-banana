@@ -1,0 +1,26 @@
+.img-profile {
+    width: 200px;
+    height: 250px;
+    position: relative;
+    &:hover {
+        .btn-picture {
+            opacity: 1;
+        }
+    }
+}
+
+.btn-picture {
+    @include center-absolute;
+    opacity: 0;
+    transition: 0.25s all linear;
+    color: $primaryTextColor;
+    padding: 1rem;
+    background: {
+        color: $darkPrimaryColor;
+    }
+    border: none;
+    border-radius: 12px 0 12px 0;
+    &:focus {
+        outline: none;
+    }
+}

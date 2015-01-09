@@ -17,6 +17,7 @@ angular.module('angularFullstackApp')
         url: '/settings',
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',
+        controllerAs: 'vm',
         authenticate: true
       });
   });

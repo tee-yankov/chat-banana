@@ -8,3 +8,10 @@
     background-image:         linear-gradient(top, $fromColor, $toColor);
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
 }
+
+@mixin center-absolute() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

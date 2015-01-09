@@ -1,21 +1,43 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular.module('angularFullstackApp')
-  .controller('SettingsCtrl', function ($scope, User, Auth) {
-    $scope.errors = {};
+    angular.module('angularFullstackApp')
+    .controller('SettingsCtrl', SettingsCtrl);
 
-    $scope.changePassword = function(form) {
-      $scope.submitted = true;
-      if(form.$valid) {
-        Auth.changePassword( $scope.user.oldPassword, $scope.user.newPassword )
-        .then( function() {
-          $scope.message = 'Password successfully changed.';
-        })
-        .catch( function() {
-          form.password.$setValidity('mongoose', false);
-          $scope.errors.other = 'Incorrect password';
-          $scope.message = '';
-        });
-      }
-		};
-  });
+    SettingsCtrl.$inject = ['User', 'Auth',];
+
+    function SettingsCtrl(User, Auth) {
+        var vm = this;
+        vm.errors = {};
+        vm.userImage = 'http://placehold.it/200x250';
+        vm.userImageName = 'Placehold.it';
+
+        vm.changePassword = function(form) {
+            vm.submitted = true;
+            if(form.$valid) {
+                Auth.changePassword( vm.user.oldPassword, vm.user.newPassword )
+                .then( function() {
+                    vm.message = 'Password successfully changed.';
+                })
+                .catch( function() {
+                    form.password.$setValidity('mongoose', false);
+                    vm.errors.other = 'Incorrect password';
+                    vm.message = '';
+                });
+            }
+        };
+
+        vm.changeImage = function() {
+            if (vm.image !== 'undefined') {
+                Auth.changeImage(vm.image, function(data) {
+                    if (data.data.name.length) {
+                        vm.userImage = data.data.path;
+                        vm.userImageName = data.data.name;
+                    }
+                });
+            }
+        };
+
+    }
+
+})();
