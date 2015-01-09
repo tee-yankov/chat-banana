@@ -9,6 +9,7 @@
     function SettingsCtrl(User, Auth, profile) {
         var vm = this;
         vm.errors = {};
+        console.log(profile);
         vm.userImage = profile.image.path;
         vm.userImageName = profile.image.name;
 

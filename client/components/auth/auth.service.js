@@ -166,6 +166,15 @@ angular.module('angularFullstackApp')
        */
         getToken: function() {
             return $cookieStore.get('token');
+        },
+
+        /**
+        * Refresh the currentUser object
+        */
+        refreshCurrentUser: function() {
+            if($cookieStore.get('token')) {
+                currentUser = User.get();
+            }
         }
     };
 });

@@ -19,9 +19,10 @@ angular.module('angularFullstackApp')
         controller: 'SettingsCtrl',
         controllerAs: 'vm',
         resolve: {
-            User: 'User',
-            profile: function(User) {
-                return User.get().$promise;
+            Auth: 'Auth',
+            profile: function(Auth) {
+                Auth.refreshCurrentUser();
+                return Auth.getCurrentUser().$promise;
             }
         },
         authenticate: true
