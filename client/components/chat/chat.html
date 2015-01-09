@@ -1,8 +1,8 @@
-<div ng-controller="ChatCtrl" class="container">
+<div ng-controller="ChatCtrl as vm" class="container">
     <div class="row">
-        <form ng-submit="addMessage()">
+        <form ng-submit="vm.addMessage()">
             <div class="col-xs-10">
-                <input placeholder="Enter a message and see it magically appear..." ng-model="newMessage" class="form-control" />
+                <input placeholder="Enter a message and see it magically appear..." ng-model="vm.newMessage" class="form-control" />
             </div>
             <div class="col-xs-2">
                 <input type="submit" class="btn btn-default" />
@@ -11,14 +11,14 @@
     </div>
     <br />
 
-    <div class="container" ng-show="editedMessage">
-        <form ng-submit="submitEdit()">
-            <input class="form-control" ng-model="editedMessage.content" />
+    <div class="container" ng-show="vm.editedMessage">
+        <form ng-submit="vm.submitEdit()">
+            <input class="form-control" ng-model="vm.editedMessage.content" />
         </form>
     </div>
 
     <ul>
-        <div ng-repeat="message in messages | orderBy: 'sent':true" class="row">
+        <div ng-repeat="message in vm.messages | orderBy: 'sent':true" class="row">
             <div class="col-xs-1">
                 <p>{{message.name}}</p>
             </div>
