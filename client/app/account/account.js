@@ -1,23 +1,29 @@
 'use strict';
 
 angular.module('angularFullstackApp')
-  .config(function ($stateProvider) {
+.config(function ($stateProvider) {
     $stateProvider
-      .state('login', {
+    .state('login', {
         url: '/login',
         templateUrl: 'app/account/login/login.html',
         controller: 'LoginCtrl'
-      })
-      .state('signup', {
+    })
+    .state('signup', {
         url: '/signup',
         templateUrl: 'app/account/signup/signup.html',
         controller: 'SignupCtrl'
-      })
-      .state('settings', {
+    })
+    .state('settings', {
         url: '/settings',
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',
         controllerAs: 'vm',
+        resolve: {
+            Auth: 'Auth',
+            profile: function(Auth) {
+                return Auth.getCurrentUser();
+            }
+        },
         authenticate: true
-      });
-  });
+    });
+});

@@ -4,13 +4,13 @@
     angular.module('angularFullstackApp')
     .controller('SettingsCtrl', SettingsCtrl);
 
-    SettingsCtrl.$inject = ['User', 'Auth',];
+    SettingsCtrl.$inject = ['User', 'Auth', 'profile'];
 
-    function SettingsCtrl(User, Auth) {
+    function SettingsCtrl(User, Auth, profile) {
         var vm = this;
         vm.errors = {};
-        vm.userImage = 'http://placehold.it/200x250';
-        vm.userImageName = 'Placehold.it';
+        vm.userImage = profile.image.path;
+        vm.userImageName = profile.image.name;
 
         vm.changePassword = function(form) {
             vm.submitted = true;
@@ -31,8 +31,10 @@
             if (vm.image !== 'undefined') {
                 Auth.changeImage(vm.image, function(data) {
                     if (data.data.name.length) {
+                        console.log(data.data.path);
                         vm.userImage = data.data.path;
                         vm.userImageName = data.data.name;
+                        location.reload();
                     }
                 });
             }
