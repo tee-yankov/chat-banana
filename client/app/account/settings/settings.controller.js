@@ -31,10 +31,8 @@
             if (vm.image !== 'undefined') {
                 Auth.changeImage(vm.image, function(data) {
                     if (data.data.name.length) {
-                        console.log(data.data.path);
                         vm.userImage = data.data.path;
                         vm.userImageName = data.data.name;
-                        location.reload();
                     }
                 });
             }
