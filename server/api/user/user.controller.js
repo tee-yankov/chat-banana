@@ -5,6 +5,7 @@ var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
 var multiparty = require('multiparty');
+var fs = require('fs');
 
 var validationError = function(res, err) {
     return res.json(422, err);
@@ -96,13 +97,19 @@ exports.changeImage = function(req, res, next) {
         form.parse(req, function(err, fields, files) {
             if (err) { return handleError(res, err); }
             var file = files.file[0];
-            user.image = {
-                name: file.originalFilename,
-                path: file.path.split('client')[1]
-            };
-            console.log(user.image.path);
-            user.save();
-            res.json(200, user.image);
+            var tmp_path = file.path;
+            var target_path = config.uploadDir + '/' + user._id;
+            fs.rename(tmp_path, target_path, function(err) {
+                if (err) { return handleError(res, err); }
+                fs.unlink(tmp_path, function() {
+                    user.image = {
+                        name: file.originalFilename,
+                        path: target_path.split('client')[1]
+                    };
+                    user.save();
+                    res.json(200, user.image);
+                });
+            });
         });
     });
 };

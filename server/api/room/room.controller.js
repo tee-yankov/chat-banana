@@ -66,11 +66,13 @@ exports.createmessage = function(req, res, next) {
             if (!user) return res.send(401);
             newMessage.name = user.profile.name;
             newMessage.sent = Date.now();
+            newMessage.uid = user._id;
             var updated = room;
             updated.messages.push(newMessage);
             updated.save(function(err) {
                 if(err) {return handleError(res, err);}
-                return res.json(201, updated.messages[updated.messages.length-1]);
+                var message = updated.messages[updated.messages.length - 1];
+                return res.json(201, message);
             });
         });
     });

@@ -32,6 +32,7 @@
             .success(function(data) {
                 vm.messages = data.messages;
                 socket.syncUpdates('room', vm.messages);
+                console.log(vm.messages);
             })
             .error(function() {
                 console.log('Error retrieving messages.');

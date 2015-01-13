@@ -6,8 +6,9 @@ var mongoose = require('mongoose'),
 var RoomSchema = new Schema({
     name: String,
     info: String,
-    messages : [{
+    messages: [{
         name: String,
+        uid: Schema.Types.ObjectId,
         message: String,
         sent: Date
     }],

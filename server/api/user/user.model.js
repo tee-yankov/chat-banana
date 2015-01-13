@@ -13,8 +13,8 @@ var UserSchema = new Schema({
         default: 'user'
     },
     image: {
-        name: String,
-        path: String
+        name: {type: String, default: 'none'},
+        path: {type: String, default: '/assets/images/profile/default.jpg'}
     },
     hashedPassword: String,
     provider: String,

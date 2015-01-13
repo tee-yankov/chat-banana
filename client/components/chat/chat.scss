@@ -2,6 +2,35 @@ p, a {
     color: $primaryTextColor;
     word-break: break-all;
 }
+
+.container-fluid {
+    ul {
+        padding-left: 0;
+    }
+}
+
 .date-sent {
     color: $secondaryTextColor;
+}
+.chat-thumb {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+    &:hover {
+        &:after {
+            opacity: 1;
+        }
+    }
+    &:after {
+        content: attr(data-name);
+        @include center-absolute;
+        text-align: center;
+        width: 50px;
+        background-color: #333;
+        color: #FFF;
+        overflow: hidden;
+        transition: 0.25s all ease;
+        opacity: 0;
+    }
 }
