@@ -1,6 +1,8 @@
 .navbar-default {
     background-color: $darkPrimaryColor;
     color: $primaryTextColor;
+    border: none;
+    @include BoxShadowHelper(1);
     .navbar-brand {
         color: $primaryTextColor;
     }
